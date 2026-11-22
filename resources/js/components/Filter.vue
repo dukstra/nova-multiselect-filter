@@ -14,7 +14,7 @@
                 :select-label="selectLabel"
                 :selected-label="selectedLabel"
                 :show-labels="showLabels"
-                label="name"
+                :custom-label="optionLabel"
                 track-by="value"
                 @update:modelValue="handleChange"
             >
@@ -64,6 +64,10 @@
         },
 
         methods: {
+            optionLabel(option) {
+                return option.label ?? option.name ?? '';
+            },
+
             handleChange() {
                 this.$store.commit(`${this.resourceName}/updateFilterState`, {
                     filterClass: this.filterKey,

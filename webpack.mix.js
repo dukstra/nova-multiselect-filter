@@ -2,6 +2,9 @@ const mix = require('laravel-mix');
 
 mix
     .setPublicPath('dist')
+    .webpackConfig({
+        externals: { vue: 'Vue' },
+    })
     .js('resources/js/filter.js', 'js')
     .vue({ version: 3 })
     .version();
